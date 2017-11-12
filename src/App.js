@@ -29,21 +29,31 @@ class App extends Component {
   handleChangeForm = (name, value) => {
     this.setState({
       [name]: value
-    })
+    });
   };
-  handleChangeTimeOver = (value) => {
+  handleChangeTimeOver = value => {
     const { isTimeOver } = this.state;
     this.setState({
       isTimeOver: value
-    })
+    });
   };
   isFormCommitable = () => {
     const { step, firstName, lastName, email, cardNumber } = this.state;
     switch (step) {
       case 1:
-        if ( firstName !== '' && lastName !== '' && email !== '' && email.includes('@') ) {
+        if (
+          firstName !== "" &&
+          lastName !== "" &&
+          email !== "" &&
+          email.includes("@")
+        ) {
           return true;
-        } else if ( firstName === '' && lastName !== '' && email !== '' && email.includes('@') ) {
+        } else if (
+          firstName === "" &&
+          lastName !== "" &&
+          email !== "" &&
+          email.includes("@")
+        ) {
           return false;
         } else {
           return false;
@@ -59,15 +69,40 @@ class App extends Component {
     const stepNumber = this.state.step;
     return stepTitles.map((step, idx) => {
       const currentStep = idx + 1;
+      if (stepNumber === 1) {
+        return (
+          <Step
+            key={step}
+            onClick={this.handleTabClick}
+            isSelected={currentStep === 1}
+            number={currentStep}
+            isClickable={false}
+          >
+            {step}
+          </Step>
+        );
+      } else if (stepNumber === 2) {
+        return (
+          <Step
+            key={step}
+            onClick={this.handleTabClick}
+            isSelected={currentStep === 2}
+            number={currentStep}
+            isClickable={currentStep === 1}
+          >
+            {step}
+          </Step>
+        );
+      }
       return (
         <Step
           key={step}
-          onClick={ this.handleTabClick }
+          onClick={this.handleTabClick}
           isSelected={currentStep === stepNumber}
           number={currentStep}
           isClickable={currentStep !== stepNumber}
         >
-          { step }
+          {step}
         </Step>
       );
     });
@@ -76,38 +111,39 @@ class App extends Component {
     const { step, firstName, lastName, email, cardNumber } = this.state;
     switch (step) {
       case 1:
-        return <PersonalForm
-          firstName={firstName}
-          lastName={lastName}
-          email={email}
-          onChangeForm={this.handleChangeForm}
-        />
+        return (
+          <PersonalForm
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            onChangeForm={this.handleChangeForm}
+          />
+        );
 
       case 2:
-        return <CardForm
-          cardNumber={cardNumber}
-          onChangeForm={this.handleChangeForm} onChangeTimeOver={this.handleChangeTimeOver}
-        />
+        return (
+          <CardForm
+            cardNumber={cardNumber}
+            onChangeForm={this.handleChangeForm}
+            onChangeTimeOver={this.handleChangeTimeOver}
+          />
+        );
 
       case 3:
-        return 'Поздравляем!'
+        return "Поздравляем!";
     }
   };
   render() {
     const { isTimeOver } = this.state;
     return (
       <div className="container">
-        <div className="tab-panel">
-          {this.renderSteps()}
-        </div>
-        <div className="form-content">
-          {this.renderForm()}
-        </div>
+        <div className="tab-panel">{this.renderSteps()}</div>
+        <div className="form-content">{this.renderForm()}</div>
         <div className="button-panel">
           <button
             className="button-next"
             onClick={this.handleClickNextForm}
-            disabled={ !this.isFormCommitable() || isTimeOver }
+            disabled={!this.isFormCommitable() || isTimeOver}
           >
             next
           </button>

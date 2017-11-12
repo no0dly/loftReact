@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import './Step.css';
+import React, { PureComponent } from "react";
+import "./Step.css";
 
 class Step extends PureComponent {
   handleClick = () => {
@@ -11,19 +11,19 @@ class Step extends PureComponent {
     }
   };
   render() {
-    const { isSelected, number, isClickable } = this.props
+    const { isSelected, number, isClickable } = this.props;
     return (
-      <a href="#"
-        className={ `step ${ (isSelected) ? 'step-selected' : '' } ${ (isClickable) ? 'step-clickable' : '' }` }
-        onClick={this.handleClick}>
-        <div className="step__number">
-          { number }
-        </div>
-        <div className="step__title">
-          { this.props.children }
-        </div>
+      <a
+        href="#"
+        className={`step ${isSelected ? "step-selected" : ""} ${isClickable
+          ? "step-clickable"
+          : ""}`}
+        onClick={this.handleClick}
+      >
+        <div className="step__number">{number}</div>
+        <div className="step__title">{this.props.children}</div>
       </a>
-    )
+    );
   }
 }
 

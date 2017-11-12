@@ -58,7 +58,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={2}
-                isClickable={true}
+                isClickable={false}
               >
                 Card information
               </Step>
@@ -73,7 +73,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={3}
-                isClickable={true}
+                isClickable={false}
               >
                 Finish
               </Step>
@@ -123,7 +123,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={3}
-                isClickable={true}
+                isClickable={false}
               >
                 Finish
               </Step>
