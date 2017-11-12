@@ -98,12 +98,11 @@ class App extends Component {
     return (
       <div className="container">
         <div className="tab-panel">
-
+          {this.renderSteps()}
         </div>
         <div className="form-content">
           {this.renderForm()}
         </div>
-        {this.renderSteps()}
         <div className="button-panel">
           <button
             className="button-next"

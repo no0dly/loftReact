@@ -234,7 +234,6 @@ describe('Компонент App', () => {
       it('При вызове с 2 аргументами меняется state[первый аргумент] = второй аргумент', () => {
         wrapper.instance().handleChangeForm('firstName', 'Иван');
         wrapper.update();
-        console.log(wrapper.state())
         expect(wrapper.state().firstName).toEqual('Иван');
       });
     });
