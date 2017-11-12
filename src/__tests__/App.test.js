@@ -58,7 +58,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={2}
-                isClickable={false}
+                isClickable={true}
               >
                 Card information
               </Step>
@@ -73,7 +73,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={3}
-                isClickable={false}
+                isClickable={true}
               >
                 Finish
               </Step>
@@ -123,7 +123,7 @@ describe('Компонент App', () => {
                 onClick={wrapper.instance().handleTabClick}
                 isSelected={false}
                 number={3}
-                isClickable={false}
+                isClickable={true}
               >
                 Finish
               </Step>
@@ -334,7 +334,7 @@ describe('Компонент App', () => {
         expect(wrapper.instance().renderForm).toBeDefined();
       });
 
-      it(`Если state.step === 1 возвращает компонент <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email} onChangeForm={App.handleChangeForm} />`, () => {
+      it(`Если state.step === 1 возвращает компонент <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email onChangeForm={App.handleChangeForm} />`, () => {
         wrapper.setState({
           step: 1,
           firstName: 'test',
